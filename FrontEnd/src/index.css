@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  font-family: "Poppins";
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  color: #b9b9b9;
+  position: relative;
+  padding: 0.75rem;
+  text-decoration: none;
+}
+
+img {
+  overflow-clip-margin: content-box;
+  /* float: ; */
+}
+
+li {
+  position: relative;
+}
+
+li::after {
+  background-color: #ccc;
+  bottom: 35%;
+  content: "";
+  height: 30%;
+  position: absolute;
+  right: 0;
+  width: 0.5px;
+}
+
+li:last-child::after {
+  content: none;
+}
+
+.link.active {
+  color: #000 !important;
+}
+
+.link.active::after {
+  background-color: #ccc;
+  bottom: 0;
+  content: "";
+  height: 0.2px;
+  left: 25%;
+  position: absolute;
+  width: 50%;
+}
+
+.link.active::before {
+  background-color: #ccc;
+  content: "";
+  height: 0.2px;
+  left: 25%;
+  position: absolute;
+  top: 0;
+  width: 50%;
+}
+
+.buy-btn {
+  transition: all 10ms linear 300ms !important;
+}
+
+.buy-btn:hover {
+  background-color: #000 !important;
+}
+
+.watch-btn {
+  transition: all 0.07s ease-in !important;
+}
+
+.watch-btn:hover {
+  background-color: #0088ff;
+  border: none !important;
+  color: #fff !important;
+}
+
+.watch {
+  float: right;
+  shape-outside: circle(50%) !important;
+  shape-margin: 1rem;
+}
+
+.pp-header::after {
+  background-color: #333 !important;
+  border-radius: 10px !important;
+  bottom: 10px !important ;
+  content: "";
+  height: 15px !important;
+  left: -5% !important;
+  position: absolute !important;
+  width: 110% !important;
+  z-index: -100 !important;
+}
+
+.pp-header {
+  position: relative !important;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.carousel-item-padding-40-px {
+  padding: 0 10px;
+}
+
+/* Style the arrows */
+.react-multiple-carousel__arrow {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.react-multiple-carousel__arrow:hover {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Ensure arrows don't overflow */
+.react-multiple-carousel__arrow--left {
+  left: 0px !important;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: 0px !important;
+}
+
+/* Style the dots */
+.react-multi-carousel-dot-list {
+  bottom: -20px !important;
+}
