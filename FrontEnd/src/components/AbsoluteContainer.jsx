@@ -27,7 +27,7 @@ function AbsoluteContainer() {
   ];
   return (
     <div
-      className="position-absolute top-5 h-100 d-flex flex-column justify-content-evenly gap-3 w-100"
+      className="absolute top-5 h-100 d-flex flex-column justify-content-evenly gap-3 w-100"
       style={{
         backgroundImage:
           "linear-gradient(90deg, rgba(12, 12, 12, .7), rgba(12, 12, 12, .7)), url(https://xtratheme.com/elementor/watch-shop/wp-content/uploads/sites/79/2021/10/box-bg-1.jpg)",

@@ -2,11 +2,13 @@ import { East, KeyboardBackspace } from "@mui/icons-material";
 
 function Testimony({ Info, onPrevious, onNext }) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-3">
       <h2 className="text-[30px] text-black leading-[40px] font-bold w-[50%]">
         {Info.header}
       </h2>
-      <p className="text-lg leading-[36px] w-[80%] m-0">"{Info.text}"</p>
+      <p className="text-lg text-[#707070] leading-[36px] w-[80%] m-0">
+        "{Info.text}"
+      </p>
       <div className="flex items-center justify-between w-[75%]">
         <div className="flex items-center justify-center gap-4">
           <img
@@ -26,13 +28,13 @@ function Testimony({ Info, onPrevious, onNext }) {
         <div className="flex gap-2">
           <button
             onClick={onPrevious}
-            className="p-2 hover:bg-gray-100 rounded-full"
+            className="p-2 hover:bg-black hover:text-white rounded-full"
           >
             <KeyboardBackspace />
           </button>
           <button
             onClick={onNext}
-            className="p-2 hover:bg-gray-100 rounded-full"
+            className="p-2 hover:bg-black hover:text-white rounded-full"
           >
             <East />
           </button>

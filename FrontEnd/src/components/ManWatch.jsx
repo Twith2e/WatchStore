@@ -6,7 +6,7 @@ function ManWatch() {
     <>
       <div className="relative">
         <ManPicture />
-        <div className="absolute bottom-[-210px] left-[-200px]">
+        <div className="absolute bottom-[-160px] left-[-190px]">
           <FloatingWatch />
         </div>
       </div>

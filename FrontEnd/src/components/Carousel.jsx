@@ -56,7 +56,7 @@ function CarouselComponent() {
 
   return (
     <div className="w-full max-w-[1200px] mx-auto overflow-hidden">
-      <h2 className="text-base leading-8 text-[#0088FF] mb-4">Testimonials</h2>
+      <h2 className="text-base leading-8 text-[#0088FF]">Testimonials</h2>
       <div className="relative w-full">
         <Carousel
           ref={carouselRef}
@@ -67,7 +67,11 @@ function CarouselComponent() {
           showDots={true}
           arrows={false}
           containerClass="carousel-container"
-          itemClass="carousel-item-padding-40-px"
+          itemClass="carousel-item-padding-20-px"
+          transitionDuration={800}
+          swipeable={true}
+          ssr={true}
+          customTransition="transform 800ms ease-in-out"
         >
           {testimonialData.map((item, index) => (
             <div key={index} className="">

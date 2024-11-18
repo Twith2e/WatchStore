@@ -7,6 +7,10 @@ import MoreBtn from "./MoreBtn";
 import CarouselComponent from "./Carousel";
 import ManWatch from "./ManWatch";
 import { Link } from "react-router-dom";
+import GrayBg from "./GrayBg";
+import GrayBg2 from "./Gray.Bg2";
+import AbsoluteContainer2 from "./AbsoluteContainer2";
+import Footer from "./Footer";
 
 function LandingPage() {
   return (
@@ -17,7 +21,7 @@ function LandingPage() {
       </div>
       <div className="px-[50px]">
         <RelativeContainer>
-          <div className="absolute top-0 rounded-5 h-[100%] w-[80%] m-auto left-[50%] translate-x-[-50%] bg-[#f5f5f5]"></div>
+          <GrayBg />
           <AbsoluteContainer />
         </RelativeContainer>
       </div>
@@ -35,6 +39,13 @@ function LandingPage() {
           <ManWatch />
         </div>
       </div>
+      <div className="px-[50px] mt-[200px]">
+        <RelativeContainer>
+          <GrayBg2 />
+          <AbsoluteContainer2 />
+        </RelativeContainer>
+      </div>
+      <Footer />
     </div>
   );
 }
