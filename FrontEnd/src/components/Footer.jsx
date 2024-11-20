@@ -1,5 +1,12 @@
 import FooterInfo from "./FooterInfo";
 import FooterList from "./FooterList";
+import Newsletter from "./Newsletter";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faShoppingCart,
+  faCartShopping,
+} from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
   const list = [
@@ -48,11 +55,26 @@ function Footer() {
   ];
 
   return (
-    <div className="flex justify-between bg-[#f5f5f5] p-[50px] rounded-t-[80px]">
-      <FooterInfo />
-      {list.map((item) => (
-        <FooterList list={item} />
-      ))}
+    <div className="flex flex-col gap-14 p-[50px] bg-[#f1f2f6] rounded-t-[80px]">
+      <div className="flex justify-between ">
+        <FooterInfo />
+        {list.map((item) => (
+          <FooterList list={item} />
+        ))}
+        <Newsletter />
+      </div>
+      <div className="flex justify-between w-full">
+        <span className="text-[#919191] text-sm">
+          XTRA Shop &copy; 2024 All Rights Reserved
+        </span>
+        <Link
+          className="text-[#919191] text-sm no-underline hover:text-[#0088ff] flex gap-2 items-center"
+          to="/"
+        >
+          <FontAwesomeIcon icon={faCartShopping} />
+          Track your orders
+        </Link>
+      </div>
     </div>
   );
 }

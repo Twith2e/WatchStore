@@ -11,6 +11,7 @@ import GrayBg from "./GrayBg";
 import GrayBg2 from "./Gray.Bg2";
 import AbsoluteContainer2 from "./AbsoluteContainer2";
 import Footer from "./Footer";
+import Newsletter from "./Newsletter";
 
 function LandingPage() {
   return (

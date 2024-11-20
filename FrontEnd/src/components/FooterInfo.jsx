@@ -25,14 +25,14 @@ function FooterInfo() {
     },
   ];
   return (
-    <div className="flex flex-col gap-[30px]">
+    <div className="flex flex-col gap-[30px] w-[45%]">
       <img
         src="https://xtratheme.com/elementor/watch-shop/wp-content/uploads/sites/79/2021/10/logo-watch-shop.png"
         alt="logo"
         width="150"
         height="150"
       />
-      <p className="text-[#00000080] text-base leading-8 font-normal">
+      <p className="text-[#00000080] text-base leading-8 font-normal text-wrap">
         A smartwatch is a wearable computer in the form of a watch; modern
         smartwatches provide a local touchscreen interface for daily use.
       </p>

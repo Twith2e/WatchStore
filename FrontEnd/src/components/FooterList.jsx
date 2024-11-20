@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function FooterList({ list }) {
   return (
-    <div>
+    <div className="w-[18%]">
       <ul>
         <li className="mb-[40px]">
           <h2 className="text-xl leading-5 font-bold">{list.header}</h2>
