@@ -5,7 +5,10 @@ import Login from "./pages/Login";
 import "./index.css";
 import Home from "./pages/Home";
 import LandingPage from "./components/LandingPage";
-import Dashboard from "./pages/Dashboard";
+import ProductForm from "./pages/Dashboard";
+import PasswordReset from "./pages/PasswordReset";
+import UpdatePassword from "./pages/UpdatePassword";
+import Watches from "./pages/Watches";
 import AOS from "aos";
 import "aos/dist/aos.css";
 function App() {
@@ -20,10 +23,13 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />}>
         <Route index element={<LandingPage />} />
+        <Route path="watches" element={<Watches />} />
       </Route>
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard" element={<ProductForm />} />
+      <Route path="/reset-password" element={<PasswordReset />} />
+      <Route path="/update-password/:token" element={<UpdatePassword />} />
     </Routes>
   );
 }

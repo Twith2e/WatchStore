@@ -4,14 +4,17 @@ const cors = require("cors");
 const connect = require("./config/mongodb.connection");
 const errorHandler = require("./middleware/errorHandler");
 const userRouter = require("./routes/user.routes");
+const productRouter = require("./routes/product.routes");
 require("dotenv").config();
 
 //MIDDLEWARES
-app.use(express.json());
+app.use(express.json({}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: "*" }));
 
 //ROUTES
 app.use("/user", userRouter);
+app.use("/product", productRouter);
 
 app.use(errorHandler);
 

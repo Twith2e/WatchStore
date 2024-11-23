@@ -3,6 +3,9 @@ const { cloudinary } = require("../middleware/cloudinary");
 const bcrypt = require("bcryptjs");
 const Token = require("jsonwebtoken");
 const { verifyToken } = require("../session/sessionservice");
+const nodemailer = require("nodemailer");
+const crypto = require("crypto");
+
 require("dotenv").config();
 
 const register = async (req, res, next) => {
@@ -132,8 +135,100 @@ const uploadImage = async (req, res, next) => {
         .send({ message: "Image upload failed", status: false });
     }
   } catch (error) {
+    res.status(500).send({ message: "Error uploading product", status: false });
+  }
+};
+
+const resetPassword = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    const user = await userModel.findOne({ email: email });
+    if (!user) {
+      return res.status(404).send({ message: "User not found", status: false });
+    }
+    const resetToken = user.generateResetPasswordToken();
+    await user.save({ validateBeforeSave: false });
+    try {
+      const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        service: "gmail",
+        auth: {
+          user: process.env.EMAIL,
+          pass: process.env.PASSWORD,
+        },
+      });
+      if (!transporter) {
+        throw new Error("Failed to create transporter");
+      }
+      try {
+        let mailOptions = {
+          from: `"Xtra Watch" <${process.env.EMAIL}>`,
+          to: email,
+          subject: "Confirm",
+          html: `<p>Click on the link below to reset your password:</p>
+                 <a href="http://localhost:5173/update-password/${resetToken}" style="padding: 10px 20px; 
+                 background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">
+                 Reset Password</a>
+                 <p>If you didn't request this, please ignore this email.</p>
+                 <p>This link will expire in 10 minutes.</p>`,
+        };
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            res.status(400).send({ message: error.message, status: false });
+            return console.log(error);
+          }
+          res
+            .status(200)
+            .send({ message: "Reset password token generated", status: true });
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    } catch (error) {
+      next(error);
+    }
+  } catch (error) {
     next(error);
   }
 };
 
-module.exports = { register, login, verify, uploadImage };
+const resetPasswordToken = async (req, res, next) => {
+  try {
+    const { token } = req.params;
+    const { password } = req.body;
+
+    const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
+
+    const user = await userModel.findOneAndUpdate(
+      {
+        resetPasswordToken: hashedToken,
+        resetPasswordTokenExpiry: { $gt: Date.now() },
+      },
+      {
+        $set: {
+          password,
+          resetPasswordToken: null,
+          resetPasswordTokenExpiry: null,
+        },
+      },
+      { new: true }
+    );
+    if (!user) {
+      return res.status(404).send({ message: "Invalid token", status: false });
+    }
+    res.status(200).send({ message: "Password updated", status: true });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = {
+  register,
+  login,
+  verify,
+  uploadImage,
+  resetPassword,
+  resetPasswordToken,
+};

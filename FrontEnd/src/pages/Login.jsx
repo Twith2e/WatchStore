@@ -52,6 +52,11 @@ function Login() {
     },
   });
 
+  // const handleRest = (e) => {
+  //   e.preventDefault();
+  //   axios
+  // };
+
   return (
     <div className="container-fluid">
       <div className="row d-flex align-items-center justify-content-center">
@@ -112,6 +117,9 @@ function Login() {
                 </div>
               )}
             </div>
+            <div className="mt-3 text-right">
+              <Link to={"/reset-password"}>Reset Password</Link>
+            </div>
             <div className="d-flex align-items-center justify-content-center">
               <button
                 className="btn btn-primary"
@@ -124,7 +132,7 @@ function Login() {
 
             <div className="mt-3 d-flex gap-2">
               <span>Don't have an account yet?</span>
-              <Link to={"/"}>Create Account</Link>
+              <Link to={"/register"}>Create Account</Link>
             </div>
           </form>
           <ToastContainer />
